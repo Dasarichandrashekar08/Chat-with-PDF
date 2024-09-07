@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.6",
+    "@langchain/cohere": "^0.2.2",
     "@langchain/community": "^0.2.20",
     "@langchain/core": "^0.2.18",
     "@langchain/openai": "^0.2.5",
@@ -22,6 +23,8 @@
     "byte-size": "^9.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "cohere-ai": "^7.13.0",
+    "cors": "^2.8.5",
     "firebase": "^10.12.4",
     "firebase-admin": "^12.2.0",
     "langchain": "^0.2.11",
@@ -41,6 +44,7 @@
   },
   "devDependencies": {
     "@types/byte-size": "^8.1.2",
+    "@types/cors": "^2.8.17",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

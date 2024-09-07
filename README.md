@@ -12,7 +12,6 @@ Welcome to the AI SaaS Challenge! All the details you need to get started and pa
 
 4️⃣ **Challenge Details**: Find the complete blueprint, schedule, prizes, points system, and other information about the AI SaaS Challenge here: [Challenge Details](https://www.skool.com/universityofcode/classroom/63e22c85?md=dea741f6f4d84718a17b2fa16c5da407)
 
-## Schedule: July 23rd (Tuesday) - July 27th (Saturday)
 
 ### Daily Agenda
 
@@ -62,47 +61,6 @@ Welcome to the AI SaaS Challenge! All the details you need to get started and pa
 - The tech stack to focus on in 2024 and beyond
 - Technical skills to level up
 - My secrets to landing my dream job
-
-## Rewards for Participation
-
-🎁 Show up & stick till the end to receive:
-- Complete AI SaaS App Code
-- Free Giveaways
-- Winner Reveal (Maybe it's you!)
-- Tons of surprises and a BIG surprise reveal!
-
-## The Point System
-
-Earn points for various activities to win amazing prizes!
-
-1️⃣ Point: Like, Subscribe, and Comment on every YouTube Live Video
-2️⃣ Points: Tag @ssssangha on Instagram Story using #PAPAChallenge
-3️⃣ Points: Help someone who's stuck or with homework (Add screenshot proof in the AI SaaS Challenge Channel)
-4️⃣ Points: Referral Bonus when someone joins the challenge through your recommendation (Add screenshot proof in the AI SaaS Challenge Channel)
-5️⃣ Points: Submit homework each day (20 points in total if you have submitted homework daily!)
-
-### Extra Bonus Points
-
-🔟 Points: Implement Clerk correctly using our special link: [Clerk Setup](https://go.clerk.com/sonny)
-🔟 Points: Implement Clerk Elements successfully
-🔟 Points: If your build gets featured on any Day!
-
-## Prizes
-
-### 🥇 First Place Winner
-- LG 34'' Ultra Wide Monitor
-- Lifetime Mentorship Package worth £1000's
-- Clerk Goodies (Backpacks, Stickers, T-shirts, & more!)
-
-### 🥈 Second Place Winner
-- Keychron K2 Keyboard
-- Our Popular PAPA Platinum Package worth £600 GBP
-- Clerk Goodies (Backpacks, Stickers, T-shirts, & more!)
-
-### 🥉 Third Place Winner
-- Cotopaxi Clerk Backpack
-- PAPA GitHub Repo that contains over 50+ Full Stack App Source Codes!
-- Clerk Goodies (Backpacks, Stickers, T-shirts, & more!)
 
 ---
 

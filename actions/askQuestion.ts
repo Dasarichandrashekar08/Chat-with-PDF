@@ -4,10 +4,9 @@ import { Message } from "@/components/Chat";
 import { adminDb } from "@/firebaseAdmin";
 import { generateLangchainCompletion } from "@/lib/langchain";
 import { auth } from "@clerk/nextjs/server";
-// import { generateLangchainCompletion } from "@/lib/langchain";
 
-const PRO_LIMIT = 20;
-const FREE_LIMIT = 2;
+const PRO_LIMIT = Number(process.env.ASK_QUESTION_PRO_LIMIT);
+const FREE_LIMIT = Number(process.env.ASK_QUESTION_FREE_LIMIT);
 
 export async function askQuestion(id: string, question: string) {
   auth().protect();

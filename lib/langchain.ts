@@ -1,7 +1,6 @@
-import { ChatOpenAI } from "@langchain/openai";
+import { Cohere, CohereEmbeddings } from "@langchain/cohere";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-import { OpenAIEmbeddings } from "@langchain/openai";
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { createRetrievalChain } from "langchain/chains/retrieval";
@@ -14,13 +13,16 @@ import { Index, RecordMetadata } from "@pinecone-database/pinecone";
 import { adminDb } from "../firebaseAdmin";
 import { auth } from "@clerk/nextjs/server";
 
-// Initialize the OpenAI model with API key and model name
-const model = new ChatOpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-  modelName: "gpt-4o",
+// Initialize the Cohere model with API key
+
+const cohere = new Cohere({
+  apiKey: process.env.COHERE_API_KEY,  // API Key from environment variable
+  temperature: 0.7,                    // Set temperature (optional)
+  // maxTokens: 100,                      // Maximum number of tokens (optional)
+  // model: "command-xlarge-nightly",      // Specify the model (optional)
 });
 
-export const indexName = "papafam";
+export const indexName = "sample-movies";
 
 async function fetchMessagesFromDB(docId: string) {
   const { userId } = await auth();
@@ -37,7 +39,6 @@ async function fetchMessagesFromDB(docId: string) {
     .doc(docId)
     .collection("chat")
     .orderBy("createdAt", "desc")
-    // .limit(LIMIT)
     .get();
 
   const chatHistory = chats.docs.map((doc) =>
@@ -118,7 +119,10 @@ export async function generateEmbeddingsInPineconeVectorStore(docId: string) {
 
   // Generate embeddings (numerical representations) for the split documents
   console.log("--- Generating embeddings... ---");
-  const embeddings = new OpenAIEmbeddings();
+  const embeddings = new CohereEmbeddings({
+    apiKey: process.env.COHERE_API_KEY,
+    model: "embed-english-v3.0"
+  });
 
   const index = await pineconeClient.index(indexName);
   const namespaceAlreadyExists = await namespaceExists(index, docId);
@@ -185,7 +189,7 @@ const generateLangchainCompletion = async (docId: string, question: string) => {
   // Create a history-aware retriever chain that uses the model, retriever, and prompt
   console.log("--- Creating a history-aware retriever chain... ---");
   const historyAwareRetrieverChain = await createHistoryAwareRetriever({
-    llm: model,
+    llm: cohere,
     retriever,
     rephrasePrompt: historyAwarePrompt,
   });
@@ -206,7 +210,7 @@ const generateLangchainCompletion = async (docId: string, question: string) => {
   // Create a chain to combine the retrieved documents into a coherent response
   console.log("--- Creating a document combining chain... ---");
   const historyAwareCombineDocsChain = await createStuffDocumentsChain({
-    llm: model,
+    llm: cohere,
     prompt: historyAwareRetrievalPrompt,
   });
 
@@ -229,4 +233,4 @@ const generateLangchainCompletion = async (docId: string, question: string) => {
 };
 
 // Export the model and the run function
-export { model, generateLangchainCompletion };
+export { cohere as model, generateLangchainCompletion };
